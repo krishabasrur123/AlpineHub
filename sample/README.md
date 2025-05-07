@@ -11,10 +11,7 @@ Make sure that debug mode is enabled in `utils/dbconfig.js`.
 Then execute:
 
 `
-mongorestore --uri="mongodb://localhost:27017" \
-  --db=mammothdb \
-  --collection=mammoth \
-  mammothdb.bson
+mongorestore --uri="mongodb://localhost:27017" --db=mammothdb --collection=mammoth mammoth.bson
 `
 
 This dump will be refreshed periodically.
