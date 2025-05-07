@@ -1,6 +1,6 @@
 # Sample Structures for Testing Locally
 
-The file `mammothdb.bson` contains a dump of two documents from the production MongoDB instance.
+The file `mammoth.bson` contains a dump of two documents from the production MongoDB instance.
 
 Use this dump to prototype your APIs before testing on the production server. 
 
