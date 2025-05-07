@@ -29,7 +29,9 @@ export async function getLatestOpen(type) {
 }
 
 // Implement a function to get the nearest batch to a given timestamp
-// This should find the batch with a timestamp closest to (but before) the provided timestamp
+// This should find the batch with a timestamp closest to (but before) the queried timestamp
+// For example: you query for 11am today, but the most recent batch BEFORE 11am is 9am,
+// so your function should return the 9am batch.
 export async function getNearestBatch(type, ts) {
   // TODO: Implement me!
   console.log("getNearestBatch function not yet implemented");
