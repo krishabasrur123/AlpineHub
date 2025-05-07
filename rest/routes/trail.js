@@ -83,7 +83,8 @@ router.get('/latest/:name/:field', async (req, res) => {
 
 router.get('/at/:timestamp', async (req, res) => {
   try {
-    // TODO: Implement getting trail data at a specific timestamp (see the spec)
+    // TODO: Implement getting the most recent trail batchbefore a certain time. What this means is the following:
+    // If you query for a batch at 11am, and all that exists is a batch for 9am (before 11am) fetch the 9am.
     // If the proper parameters are not passed, return the proper HTTP code with message.
     // If the timestamp is not of the correct format, return the proper HTTP code with message.
     // Time stamp has format: 2025-05-01T14:25:00
