@@ -41,13 +41,19 @@ export async function fetchFromCache(type) {
     // Create a client.
     // Test whether or not the key is in the cache.
     // If it is, return the data.
+
+    const gottenKey = await client.get(key);
+    if (gottenKey){   console.log(` check key: ${key}`);
     console.log("Fetching data from Redis cache");
+    return JSON.parse(gottenKey);
+    } else {
     // If it is not, return null.
+
     console.log("Key not found in cache");
     // IMPORTANT: Log the required steps
+    return null;
+    }
     
-    console.log("fetchFromCache function not yet implemented");
-    return null;   // update this
   } catch (error) {
     console.error(`Error fetching from Redis:`, error);
     return null;
@@ -71,10 +77,11 @@ export async function cacheResult(type, blob, expiration = 300) {
     // TODO: Implement me!
     // Store the blob in the cache with the appropriate key.
     // IMPORTANT: Log the required steps
+
+    await client.setEx(key, expiration, JSON.stringify(blob));
+  console.log(`Writing data to cache ${key} with ${expiration}s`);
     console.log("Writing data to cache");
-    
-    console.log("cacheResult function not yet implemented");
-    return false;  // update this
+    return true;
   } catch (error) {
     console.error(`Error caching result:`, error);
     return false;

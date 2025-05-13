@@ -17,8 +17,14 @@ export const trailRouter = router({
   // This should return all trails in the current batch or an empty array if none exists
   getLatest: publicProcedure.query(async () => {
     // Student implementation here
-    console.log("getLatest procedure not yet implemented");
-    return [];
+try {
+      // Fetch latest trails from trailservice
+      return await TrailService.getLatestTrails();
+      
+    } catch (error) {
+      console.error("Error fetching latest trails in trrpc:", error);
+      return [];  
+    }
   }),
   
   // TODO: Implement a procedure to get a specific trail by name
@@ -27,10 +33,14 @@ export const trailRouter = router({
     .input(z.object({ name: z.string() }))
     .query(async ({ input }) => {
       // TODO: Implement me!
-      console.log("getByName procedure not yet implemented");
-      return {};
+     try {
+  return  await TrailService.getTrailByName(input.name);
+ 
+} catch (error) {
+  throw new Error('Failed to fetch the trail by name');
+}
     }),
 
   // Unlike the lift router, we don't need an update function for trails this year.
-  // We are giving you a break.
+  // We are giving you a break. YAY
 });

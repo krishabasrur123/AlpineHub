@@ -386,11 +386,16 @@ const statusOptions = {
 
 // Web Storage API functions
 function saveTabSelection(tabName) {
-  // TODO: Save the tab selection using Web Storage API
+  // TODODone: Save the tab selection using Web Storage API
+  if (tabName) {
+    localStorage.setItem('selectedtabName', tabName);
+  }
 }
 
 function loadTabSelection() {
-  // TODO: Load the tab selection using Web Storage API
+  // TODODone: Load the tab selection using Web Storage API
+  return localStorage.getItem('selectedtabName');
+  
 }
 
 // New functions for saving form state
@@ -483,12 +488,14 @@ function calculateItemsPerPage(type) {
 }
 
 function populateEntitySelect() {
+ 
   const entitySelect = document.getElementById('entitySelect');
   entitySelect.innerHTML = '<option value="">Select Trail/Lift</option>';
   
   // Add trails to dropdown
   trailData.forEach(trail => {
     const opt = document.createElement('option');
+    
     opt.value = `trail:${trail.name}`;
     opt.textContent = `Trail: ${trail.name}`;
     entitySelect.appendChild(opt);
@@ -497,6 +504,7 @@ function populateEntitySelect() {
   // Add lifts to dropdown
   liftData.forEach(lift => {
     const opt = document.createElement('option');
+     
     opt.value = `lift:${lift.name}`;
     opt.textContent = `Lift: ${lift.name}`;
     entitySelect.appendChild(opt);
@@ -804,6 +812,15 @@ async function fetchAndRender() {
 
     // TODO: Call your REST API to get trail and lift data.
     
+  const liftRes = await fetch('/lifts/latest');
+ liftData = await liftRes.json();
+
+// Fetch trail data
+const trailRes = await fetch('/trails/latest');  
+ trailData = await trailRes.json();
+
+
+
     // Clear any filtered data
     filteredTrailData = [];
     filteredLiftData = [];
@@ -836,7 +853,25 @@ async function submitStatus() {
   const [type, name] = entity.split(':');
   try {
     // TODO: Call your REST API to update the status.
+      const apiUrl = type === 'lift' ? '/lifts/update' : (type === 'trail' ? '/trails/update' : null);
+
+
+  if (!apiUrl) {
+    alert('Invalid entity type selected.');
+    return;
+  }
     
+     const response = await fetch(apiUrl, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ name, status }),
+    });
+    
+    if (!response.ok) {
+      throw new Error(`Failed to update status`);
+    }
     // Clear the form and local storage state
     document.getElementById('entitySelect').value = "";
     document.querySelectorAll('input[name="status"]').forEach(r => r.checked = false);

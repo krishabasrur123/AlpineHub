@@ -27,6 +27,7 @@
   },
   "type": "module",
   "devDependencies": {
+    "@types/cors": "^2.8.18",
     "typescript": "^5.8.3"
   }
 }

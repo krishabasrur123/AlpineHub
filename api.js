@@ -12,8 +12,8 @@ import http from 'http';
 import cors from 'cors';
 
 // tRPC
-// import { createExpressMiddleware } from '@trpc/server/adapters/express';
-// import { appRouter } from './trpc/index.js';
+//import { createExpressMiddleware } from '@trpc/server/adapters/express';
+ //import { appRouter } from './trpc/index.js';
 
 // Express setup
 const __filename = fileURLToPath(import.meta.url);

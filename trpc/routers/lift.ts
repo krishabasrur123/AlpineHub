@@ -13,9 +13,14 @@ export const liftRouter = router({
   // TODO: Implement a procedure to get the latest lift information
   // This should return all lifts in the current batch or an empty array if none exists
   getLatest: publicProcedure.query(async () => {
-    // Student implementation here
-    console.log("getLatest procedure not yet implemented");
-    return [];
+   try {
+      // Fetch latest lifts from LiftService
+      const llifts = await LiftService.getLatestLifts();
+      return llifts;  
+    } catch (error) {
+      console.error("Error fetching latest lifts in trrpc:", error);
+      return [];  
+    }
   }),
   
   // TODO: Implement a procedure to get a specific lift by name
@@ -23,9 +28,12 @@ export const liftRouter = router({
   getByName: publicProcedure
     .input(z.object({ name: z.string() }))
     .query(async ({ input }) => {
-      // TODO: Implement me!
-      console.log("getByName procedure not yet implemented");
-      return {};
+     try {
+  const llift = await LiftService.getLiftByName(input.name);
+  return llift;
+} catch (error) {
+  throw new Error('Failed to get the  lift by name');
+}
     }),
 
   // TODO: Implement a procedure to update a lift's status IN REDIS
@@ -38,7 +46,11 @@ export const liftRouter = router({
     }))
     .mutation(async ({ input }) => {
       // TODO: Implement me!
-      console.log("updateStatus procedure not yet implemented");
-      return { success: false, message: "Not implemented" };
+      try {
+    return await LiftService.updateLiftStatus(input.name, input.status);
+      } catch (error){ throw new Error('Failed to update lift status in trpc');
+
+      }
+
     }),
 });

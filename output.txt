@@ -1,0 +1,27 @@
+Lift by Name: {
+  _id: '6823b4d4781411442c9729c1',
+  name: 'Broadway Express 1',
+  status: 'WEATHER HOLD',
+  rideTime: 4,
+  lastUpdated: '2025-05-13T13:39:33',
+  capacity: 6,
+  misc: 'High Speed'
+}
+Trail by Name: {
+  _id: '6823b4d4781411442c972a97',
+  name: 'Wazoo',
+  status: 'CLOSED',
+  difficulty: 'Extremely Difficult',
+  symbol: 'Double Black Diamond',
+  features: []
+}
+Update Lift Status Response: { success: true, message: 'Done saving liftbatch with status in trpc' }
+lift new {
+  _id: '6823b4d4781411442c972ab3',
+  name: 'Broadway Express 1',
+  status: 'WEATHER HOLD',
+  rideTime: 4,
+  lastUpdated: '2025-05-13T13:39:33',
+  capacity: 6,
+  misc: 'High Speed'
+}
