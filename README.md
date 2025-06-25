@@ -1,1 +1,1 @@
-ucla-cs144-project2
+MERN Stack App Mammoth Trails and Lifts Tracking 
