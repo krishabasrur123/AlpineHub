@@ -1,6 +1,6 @@
 # TrailSync
 
-**TrailSync** is a full-stack web application built for managing ski resort lift and trail information in real-time. The application tracks lifts, trails, weather conditions, opening hours, and other key features, providing users with up-to-date mountain information.
+**TrailSync** is a full-stack web application UCLA class project built for managing ski resort lift and trail information in real-time. The application tracks lifts, trails, weather conditions, opening hours, and other key features, providing users with up-to-date mountain information.
 
 ---
 
@@ -55,9 +55,13 @@
 
 ---
 
+
 ## Tech Stack
 - **Backend:** Node.js, Express, GraphQL, tRPC  
 - **Database:** MongoDB  
 - **Caching:** Redis  
 - **Frontend:** HTML, JavaScript  
 - **Other Tools:** Apollo Server, BSON, REST APIs
+
+  ## Acknowledgements
+This project was adapted from code and examples by [Ryan Rosaio](https://github.com/RyanRosario). 
